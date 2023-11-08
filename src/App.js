@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import FriendList from "./Components/FriendList";
+import Button from "./Components/Button";
+import FormAddFriend from "./Components/FormAddFriend";
+import FormSplitBill from "./Components/FormSplitBill";
+import { useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [showAddFriend, setShowAddFriend] = useState(false);
+
+	function handleShowAddFriend() {
+		setShowAddFriend((show) => !show);
+	}
+	return (
+		<div className="app">
+			<div className="sidebar">
+				<FriendList />
+				{showAddFriend && <FormAddFriend />}
+				<Button onClick={handleShowAddFriend}>
+					{showAddFriend ? "Close" : "Add Friend"}
+				</Button>
+			</div>
+			<FormSplitBill />
+		</div>
+	);
 }
 
 export default App;
