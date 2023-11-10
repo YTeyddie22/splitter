@@ -23,6 +23,7 @@ function App() {
 		setSelectedFriend((curFriend) =>
 			curFriend?.id === friend.id ? null : friend
 		);
+		setShowAddFriend(false);
 	}
 	return (
 		<div className="app">
